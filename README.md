@@ -5,8 +5,7 @@ Versão em Portugês do Brasil
 Projeto em andamento, através da comunidade.
 
 
-Blog do projeto: https://github.com/kaiquewdev/Eloquent-Javascript-ptBR
-
+Blog do projeto: http://eloquent-javascript-pt.tumblr.com/ 
 --------------------------------------------
 
 Fonte: http://eloquentjavascript.net/
