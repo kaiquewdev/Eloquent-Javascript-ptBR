@@ -1,17 +1,36 @@
-<html><head><link rel="stylesheet" type="text/css" href="css/book.css"/><link rel="stylesheet" type="text/css" href="css/highlight.css"/><link rel="stylesheet" type="text/css" href="css/console.css"/><link rel="stylesheet" type="text/css" href="css/codemirror.css"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction -- Eloquent JavaScript</title></head><body><script type="text/javascript" src="js/before.js"> </script><div
-class="content"><script type="text/javascript">var chapterTag = 'intro';</script><div class="navigation">&lt;&lt; Previous chapter | <a href="contents.html">Contents</a> | <a href="index.html">Cover</a> | <a href="chapter2.html">Next chapter &gt;&gt;</a></div><h1><span class="number">Chapter 1: </span>Introduction</h1><div class="block"><p><a class="paragraph" href="#p79f8d5b0" name="p79f8d5b0"> ¶ </a>Quando os computadores pessoais foram instroduzidos pela primeira
-vez, a maioria deles veio equipado com uma linguagem de programação simples, geralmente uma variação do 
-<a name="key1"></a>BASIC. Querendo ou não a interação era estreitamente fechada com as variações dessa linguagem, e assim seria para a maioria de todos os usuários, ele querendo ou não, ele teria que provar somente daquele modo como os computadores funcionavam. Agora que os computadores se tornaram mais poderosos 
-e baratos, usuarios tipicamente não chegam a fazer mais do que algumas açoes de clique com o mouse. Para a maioria das pessoas isso funciona muito bem. Mas para muitos de nós com uma inclinação natural para lidar com tecnológia, removendo o fato de que muitos programan todos os dias, o uso de uma forma comum apresenta uma certa barreira.</p><p><a class="paragraph" href="#p807fbb" name="p807fbb"> ¶ </a>Felizmente com o efeito da evolução na rede mundial de computadores (
-World Wide Web), acontece que cada computador equipado com um navegador web moderno tem um ambiente para programação utilizando o JavaScript. E nos dias de hoje com uma preocupação minima em relação a detalhes técnicos, e tais recursos são mantidos fora dos usuarios comuns,
-mas uma pagina web pode tornar esse recursos acessiveis, a utilizar tais recursos para ensinar programação e quem estiver interessado aprender facilmente.</p><p><a class="paragraph" href="#p7e8fd14b" name="p7e8fd14b"> ¶ </a>Isso é o que este (hyper-)book tenta fazer.</p></div><hr/><div class="block"><blockquote>Eu não esclareço nada para aquele que não tem ansiedade em aprender, nem desperto aqueles que não estão ansiosos para dar respostas a si. Se eu tenho presente um
-canto de uma praça, e não me retornar com outros três, Eu nunca mais voltarei aquele ponto novamente.<br/><br/>― Confucius</blockquote><p><a class="paragraph" href="#p29fa40a7" name="p29fa40a7"> ¶ </a>Além de explicar Javascript, esse livro pretende ser uma introdução aos princípios básicos da programção. Programação, ao que parece ser difícil. As regras fundamentais são, na maior parte do tempo, simples e claras.
-Mas programas, quando construidos em cima dessas regras, tendem a se tornar complexos o bastante para introduzir as suas próprias regras, e complexidade.
-Devido a isso, programação raramente é simples e previsivel. Como
-Donald Knuth, que é como um pai da fundação nesse campo,
-diz, que programação é uma <em>arte</em>.</p><p><a class="paragraph" href="#p21782c4b" name="p21782c4b"> ¶ </a>Para retirar algo desse livro, mais do que uma leitura passiva é necessaria. Tente melhorar, fazendo um esforço para resolver os exercícios e continuar quando você estiver entendendo o conteudo contido neste material.</p></div><hr/><div class="block"><blockquote>O programador é o criador de universos que somenete ele é o responsavel.
-Universos com complexidade virtual ilimitada, que podem ser criadas em forma de programas para computadores.<br/><br/>― Joseph Weizenbaum, <em>Computer Power and Human Reason</em></blockquote><p><a class="paragraph" href="#p7e27dc78" name="p7e27dc78"> ¶ </a>Um programa são muitas coisas. É um pedaço de texto escrito por um programador,
-é a força dirigente que faz o computador fazer o que ele faz, é os dados na memória do computador, e ainda que controla as ações, realizadas nesta mesma memória. Analogies that try to compare programs
+<html><head><link rel="stylesheet" type="text/css" href="css/book.css"/><link rel="stylesheet" type="text/css" href="css/highlight.css"/><link rel="stylesheet" type="text/css" href="css/console.css"/><link rel="stylesheet" type="text/css" href="css/codemirror.css"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction -- Eloquent JavaScript</title></head><body><script type="text/javascript" src="js/before.js"> </script><div class="content"><script type="text/javascript">var chapterTag = 'intro';</script><div class="navigation">&lt;&lt; Previous chapter | <a href="contents.html">Contents</a> | <a href="index.html">Cover</a> | <a href="chapter2.html">Next chapter &gt;&gt;</a></div><h1><span class="number">Chapter 1: </span>Introduction</h1><div class="block"><p><a class="paragraph" href="#p79f8d5b0" name="p79f8d5b0"> ¶ </a>When personal computers were first introduced, most of them came
+equipped with a simple programming language, usually a variant of
+<a name="key1"></a>BASIC. Interacting with the computer was closely integrated with
+this language, and thus every computer-user, whether he wanted to or
+not, would get a taste of it. Now that computers have become plentiful
+and cheap, typical users don't get much further than clicking things
+with a mouse. For most people, this works very well. But for those of
+us with a natural inclination towards technological tinkering, the
+removal of programming from every-day computer use presents something
+of a barrier.</p><p><a class="paragraph" href="#p807fbb" name="p807fbb"> ¶ </a>Fortunately, as an effect of developments in the World Wide Web, it so
+happens that every computer equipped with a modern web-browser also
+has an environment for programming JavaScript. In today's spirit of
+not bothering the user with technical details, it is kept well hidden,
+but a web-page can make it accessible, and use it as a platform for
+learning to program.</p><p><a class="paragraph" href="#p7e8fd14b" name="p7e8fd14b"> ¶ </a>That is what this (hyper-)book tries to do.</p></div><hr/><div class="block"><blockquote>I do not enlighten those who are not eager to learn, nor arouse those
+who are not anxious to give an explanation themselves. If I have
+presented one corner of the square and they cannot come back to me
+with the other three, I should not go over the points again.<br/><br/>― Confucius</blockquote><p><a class="paragraph" href="#p29fa40a7" name="p29fa40a7"> ¶ </a>Besides explaining JavaScript, this book tries to be an introduction
+to the basic principles of programming. Programming, it turns out, is
+hard. The fundamental rules are, most of the time, simple and clear.
+But programs, while built on top of these basic rules, tend to become
+complex enough to introduce their own rules, their own complexity.
+Because of this, programming is rarely simple or predictable. As
+Donald Knuth, who is something of a founding father of the field,
+says, it is an <em>art</em>.</p><p><a class="paragraph" href="#p21782c4b" name="p21782c4b"> ¶ </a>To get something out of this book, more than just passive reading is
+required. Try to stay sharp, make an effort to solve the exercises,
+and only continue on when you are reasonably sure you understand the
+material that came before.</p></div><hr/><div class="block"><blockquote>The computer programmer is a creator of universes for which he alone
+is responsible. Universes of virtually unlimited complexity can be
+created in the form of computer programs.<br/><br/>― Joseph Weizenbaum, <em>Computer Power and Human Reason</em></blockquote><p><a class="paragraph" href="#p7e27dc78" name="p7e27dc78"> ¶ </a>A program is many things. It is a piece of text typed by a programmer,
+it is the directing force that makes the computer do what it does, it
+is data in the computer's memory, yet it controls the actions
+performed on this same memory. Analogies that try to compare programs
 to objects we are familiar with tend to fall short, but a
 superficially fitting one is that of a machine. The gears of a
 mechanical watch fit together ingeniously, and if the watchmaker was
