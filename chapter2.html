@@ -1,93 +1,89 @@
-<html><head><link rel="stylesheet" type="text/css" href="css/book.css"/><link rel="stylesheet" type="text/css" href="css/highlight.css"/><link rel="stylesheet" type="text/css" href="css/console.css"/><link rel="stylesheet" type="text/css" href="css/codemirror.css"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Basic JavaScript: values, variables, and control flow -- Eloquent JavaScript</title></head><body><script type="text/javascript" src="js/before.js"> </script><div class="content"><script type="text/javascript">var chapterTag = 'basics';</script><div class="navigation"><a href="chapter1.html">&lt;&lt; Previous chapter</a> | <a href="contents.html">Contents</a> | <a href="index.html">Cover</a> | <a href="chapter3.html">Next chapter &gt;&gt;</a></div><h1><span class="number">Chapter 2: </span>Basic JavaScript: values, variables, and control flow</h1><div class="block"><p><a class="paragraph" href="#pf16a700" name="pf16a700"> ¶ </a>Inside the computer's world, there is only data. That which is not
-data, does not exist. Although all data is in essence just a sequence
-of bits<a class="footref" href="#footnote1">1</a>, and is thus fundamentally alike, every piece of data plays
-its own role. In JavaScript's system, most of this data is neatly
-separated into things called <a name="key1"></a>values. Every value has a type, which
-determines the kind of role it can play. There are six basic types of
-values: Numbers, strings, booleans, objects, functions, and undefined
-values.</p><p><a class="paragraph" href="#p2c1d45c9" name="p2c1d45c9"> ¶ </a>To create a value, one must merely invoke its name. This is very
-convenient. You don't have to gather building material for your
-values, or pay for them, you just call for one and <em>woosh</em>, you have
-it. They are not created from thin air, of course. Every value has to
-be stored somewhere, and if you want to use a gigantic number of them
-at the same time you might run out of computer memory. Fortunately,
-this is only a problem if you need them all simultaneously. As soon as
-you no longer use a value, it will dissipate, leaving behind only a
-few bits. These bits are recycled to make the next generation of
-values.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p19562003" name="p19562003"> ¶ </a>Values of the type <a name="key2"></a>number are, as you might have deduced, numeric
-values. They are written the way numbers are usually written:</p><pre class="code expression"><span class="atom">144</span></pre><p><a class="paragraph" href="#p1f52a0a5" name="p1f52a0a5"> ¶ </a>Enter that in the console, and the same thing is printed in the output
-window. The text you typed in gave rise to a number value, and the
-console took this number and wrote it out to the screen again. In a
-case like this, that was a rather pointless exercise, but soon we will
-be producing values in less straightforward ways, and it can be useful
-to 'try them out' on the console to see what they produce.</p><p><a class="paragraph" href="#p80cb806" name="p80cb806"> ¶ </a>This is what <code>144</code> looks like in bits<a class="footref" href="#footnote2">2</a>:</p><pre class="preformatted">0100000001100010000000000000000000000000000000000000000000000000</pre><p><a class="paragraph" href="#p1b9e3d68" name="p1b9e3d68"> ¶ </a>The number above has 64 bits. Numbers in JavaScript always do. This
-has one important repercussion: There is a limited amount of different
-numbers that can be expressed. With three decimal digits, only the
-numbers 0 to 999 can be written, which is 10<sup>3</sup> = 1000 different
-numbers. With 64 binary digits, 2<sup>64</sup> different numbers can be written.
-This is a lot, more than 10<sup>19</sup> (a one with nineteen zeroes).</p><p><a class="paragraph" href="#p72d2d6de" name="p72d2d6de"> ¶ </a>Not all whole numbers below 10<sup>19</sup> fit in a JavaScript number though.
-For one, there are also negative numbers, so one of the bits has to be
-used to store the sign of the number. A bigger issue is that non-whole
-numbers must also be represented. To do this, 11 bits are used to
-store the position of the fractional dot within the number.</p><p><a class="paragraph" href="#p69fbfdd9" name="p69fbfdd9"> ¶ </a>That leaves 52 bits<a class="footref" href="#footnote3">3</a>. Any whole number less than 2<sup>52</sup> (which is more
-than 10<sup>15</sup>) will safely fit in a JavaScript number. In most cases, the
-numbers we are using stay well below that, so we do not have to
-concern ourselves with bits at all. Which is good. I have nothing in
-particular against bits, but you <em>do</em> need a terrible lot of them to
-get anything done. When at all possible, it is more pleasant to deal
-with bigger things.</p><p><a class="paragraph" href="#p3986de35" name="p3986de35"> ¶ </a>Fractional numbers are written by using a dot.</p><pre class="code expression"><span class="atom">9.81</span></pre><p><a class="paragraph" href="#pb4a36c6" name="pb4a36c6"> ¶ </a>For very big or very small numbers, one can also use 'scientific'
-notation by adding an <code>e</code>, followed by the exponent of the number:</p><pre class="code expression"><span class="atom">2.998e8</span></pre><p><a class="paragraph" href="#p3140e007" name="p3140e007"> ¶ </a>Which is 2.998 * 10<sup>8</sup> = 299800000.</p><p><a class="paragraph" href="#pb68b1cd" name="pb68b1cd"> ¶ </a>Calculations with whole numbers (also called integers) that fit in 52
-bits are guaranteed to always be precise. Unfortunately, calculations
-with fractional numbers are generally not. The same way that π (pi) can not be
-precisely expressed by a finite amount of decimal digits, many numbers
-lose some precision when only 64 bits are available to store them.
-This is a shame, but it only causes practical problems in very
-specific situations. The important thing is to be aware of it, and
-treat fractional digital numbers as approximations, not as precise
-values.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p355f31b3" name="p355f31b3"> ¶ </a>The main thing to do with numbers is arithmetic. Arithmetic operations
-such as addition or multiplication take two number values and produce
-a new number from them. Here is what they look like in JavaScript:</p><pre class="code expression"><span class="atom">100</span> + <span class="atom">4</span> * <span class="atom">11</span></pre><p><a class="paragraph" href="#p5df9439a" name="p5df9439a"> ¶ </a>The <a name="key3"></a><code>+</code> and <a name="key4"></a><code>*</code> symbols are called operators. The first stands for
-addition, and the second for multiplication. Putting an operator
-between two values will <a name="key5"></a>apply it to those values, and
-produce a new value.</p><p><a class="paragraph" href="#p40d95ac7" name="p40d95ac7"> ¶ </a>Does the example mean 'add 4 and 100, and multiply the result by 11',
-or is the multiplication done before the adding? As you might have
-guessed, the multiplication happens first. But, as in mathematics,
-this can be changed by wrapping the addition in parentheses<a name="key6"></a>:</p><pre class="code expression">(<span class="atom">100</span> + <span class="atom">4</span>) * <span class="atom">11</span></pre><p><a class="paragraph" href="#p50d8329c" name="p50d8329c"> ¶ </a>For subtraction, there is the <a name="key7"></a><code>-</code> operator, and division can be done
-with <a name="key8"></a><code>/</code>. When operators appear together without parentheses, the
-order in which they are applied is determined by the <a name="key9"></a>precedence of
-the operators. The first example shows that multiplication has a
-higher precedence than addition. Division and multiplication always
-come before subtraction and addition. When multiple operators with the
-same precedence appear next to each other (<code>1 - 1 + 1</code>) they are
-applied left-to-right.</p><p><a class="paragraph" href="#p41cb7a91" name="p41cb7a91"> ¶ </a>Try to figure out what value this produces, and then run it to see if
-you were correct...</p><pre class="code expression"><span class="atom">115</span> * <span class="atom">4</span> - <span class="atom">4</span> + <span class="atom">88</span> / <span class="atom">2</span></pre><p><a class="paragraph" href="#p25c63f52" name="p25c63f52"> ¶ </a>These rules of precedence are not something you should worry about.
-When in doubt, just add parentheses.</p><p><a class="paragraph" href="#p762478e7" name="p762478e7"> ¶ </a>There is one more arithmetic operator which is probably less familiar
-to you. The <a name="key10"></a><code>%</code> symbol is used to represent the <a name="key11"></a>remainder operation.
-<code>X % Y</code> is the remainder of dividing <code>X</code> by <code>Y</code>. For example
-<code>314 % 100</code> is <code>14</code>, <code>10 % 3</code> is <code>1</code>, and <code>144 % 12</code> is <code>0</code>. Remainder
-has the same precedence as multiplication and division.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p4a3424f8" name="p4a3424f8"> ¶ </a>The next data type is the <a name="key12"></a>string. Its use is not as evident from its
-name as with numbers, but it also fulfills a very basic role. Strings
-are used to represent text, the name supposedly derives from the fact
-that it strings together a bunch of characters. Strings are written by
-enclosing their content in quotes:</p><pre class="code expression"><span class="string">&quot;Patch my boat with chewing gum.&quot;</span></pre><p><a class="paragraph" href="#p2578d13f" name="p2578d13f"> ¶ </a>Almost anything can be put between double quotes, and JavaScript will
-make a string value out of it. But a few characters are tricky. You
-can imagine how putting quotes between quotes might be hard. Newlines,
-<a name="key13"></a>the things you get when you press enter, can also not be put
-between quotes, the string has to stay on a single line.</p><p><a class="paragraph" href="#p5b134df3" name="p5b134df3"> ¶ </a>To be able to have such characters in a string, the following trick is
-used: Whenever a backslash ('<code>\</code>') is found inside quoted text, it
-indicates that the character after it has a special meaning. A quote
-that is preceded by a backslash will not end the string, but be part
-of it. When an '<code>n</code>' character occurs after a backslash, it is
-interpreted as a newline. Similarly, a '<code>t</code>' after a backslash means a
-tab character<a class="footref" href="#footnote4">4</a>.</p><pre class="code expression"><span class="string">&quot;This is the first line\nAnd this is the second&quot;</span></pre><p><a class="paragraph" href="#p38a5cda" name="p38a5cda"> ¶ </a>Note that if you type this into the console, it'll display it back in
-'source' form, with the quotes and backslash escapes. To see only the
-actual text, you can type <code>print(&quot;a\nb&quot;)</code>. What that does precisely
-will be clarified a little further on.</p><p><a class="paragraph" href="#p69b5ec55" name="p69b5ec55"> ¶ </a>There are of course situations where you want a backslash in a string
-to be just a backslash, not a special code. If two backslashes follow
-each other, they will collapse right into each other, and only one
-will be left in the resulting string value:</p><pre class="code expression"><span class="string">&quot;A newline character is written like \&quot;\\n\&quot;.&quot;</span></pre></div><hr/><div class="block"><p><a class="paragraph" href="#p78af27fc" name="p78af27fc"> ¶ </a>Strings can not be divided, multiplied, or subtracted. The <a name="key14"></a><code>+</code>
-operator <em>can</em> be used on them. It does not add, but it concatenates,
-it glues two strings together.</p><pre class="code expression"><span class="string">&quot;con&quot;</span> + <span class="string">&quot;cat&quot;</span> + <span class="string">&quot;e&quot;</span> + <span class="string">&quot;nate&quot;</span></pre><p><a class="paragraph" href="#p52eb7d44" name="p52eb7d44"> ¶ </a>There are more ways of manipulating strings, but these are discussed
+<html><head><link rel="stylesheet" type="text/css" href="css/book.css"/><link rel="stylesheet" type="text/css" href="css/highlight.css"/><link rel="stylesheet" type="text/css" href="css/console.css"/><link rel="stylesheet" type="text/css" href="css/codemirror.css"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JavaScript Básico: valores, variáveis, e controle de fluxo -- Eloquent JavaScript</title></head><body><script type="text/javascript" src="js/before.js"> </script><div class="content"><script type="text/javascript">var chapterTag = 'basics';</script><div class="navigation"><a href="chapter1.html">&lt;&lt; Previous chapter</a> | <a href="contents.html">Contents</a> | <a href="index.html">Cover</a> | <a href="chapter3.html">Next chapter &gt;&gt;</a></div><h1><span class="number">Capítulo 2: </span>JavaScript Básico: valores, variáveis, controle de fluxo</h1><div class="block"><p><a class="paragraph" href="#pf16a700" name="pf16a700"> ¶ 
+</a>Dentro do mundo do computador, há apenas dados. O que não é
+dado, não existe. Todos os dados são essencialmente apenas uma sequência de 
+bits<a class="footref" href="#footnote1">1</a>, e assim, fundamentalmente iguais, cada pedaço de dado desempenha
+o seu próprio papel. No sistema JavaScript, a maioria dos dados é nitidamente
+separada em coisas chamadas <a name="key1"></a>valores. Cada valor tem um tipo, que
+determina o tipo de papel que pode desempenhar. Existem seis tipos básicos de
+valores: Numbers, strings, booleans, objects, functions, e valores undefined.
+</p><p><a class="paragraph" href="#p2c1d45c9" name="p2c1d45c9"> ¶ </a>Para criar um valor, deve-se simplesmente invocar seu nome. Isso é muito
+conveniente. Você não tem que recolher o material de construção para seus
+valores, ou pagar por eles, você só liga para um e <em>woosh</em>, você
+tem. Eles não são criados a partir do ar, é claro. Todo valor tem que
+ser armazenado em algum lugar, e se você quiser usar um número gigantesco 
+seu computador pode ficar sem memoria. Felizmente,
+isso só é um problema se você precisar de toda a memoria simultaneamente.
+Assim que você não usar mais o valor, ele vai se dissipar, deixando para trás apenas alguns bits.
+Estes bits vão ser reciclados para a proxima geração de valores.
+</p></div><hr/><div class="block"><p><a class="paragraph" href="#p19562003" name="p19562003"> ¶ </a>Valores do tipo <a name="key2"></a>número, como você deve ter deduzido, são valores numéricos.
+Eles são escritos da maneira como os números geralmente são escritos:</p><pre class="code expression"><span class="atom">144</span></pre><p><a class="paragraph" href="#p1f52a0a5" name="p1f52a0a5"> ¶ </a>
+Digite no console e a mesma coisa vai ser impressa na janela de saída.
+O texto que você digitou deu origem a um valor numérico, o console leu e escreveu na tela. 
+Neste caso, foi um exercício sem sentido, mas logo estaremos produzindo valores de forma menos simples, então é util
+testá-los no console e ver o que produzuem.</p><p><a class="paragraph" href="#p80cb806" name="p80cb806"> ¶ </a>O número<code>144</code> se parece com isto em bits<a class="footref" href="#footnote2">2</a>:</p><pre class="preformatted">0100000001100010000000000000000000000000000000000000000000000000</pre><p><a class="paragraph" href="#p1b9e3d68" name="p1b9e3d68"> ¶ </a>
+O número acima tem 64 bits.
+<strong>Importante:</strong> Existe uma quantidade limitada de números que podem ser expressados.
+Com três dígitos decimais, apenas os números de 0 a 999 podem ser escritos, que é 10<sup>3</sup> = 1000 combinações diferentes.
+Com 64 dígitos binários, 2<sup>64</sup> combinações diferentes podem ser escritas.
+Isto é muito mais do que 10<sup>19</sup> (a one with nineteen zeroes).</p><p><a class="paragraph" href="#p72d2d6de" name="p72d2d6de"> ¶ </a>Nem todos os números inteiros menores que 10<sup>19</sup> cabem em um número JavaScript.
+Por um lado, também há números negativos, então, um dos bits deve ser usado para armazenar o sinal do número. A grande questão é que numeros
+não inteiros também devem ser representados. Para fazer isto, 11 bits são usados para armazenar a posição do ponto fracional dentro do número.
+</p><p><a class="paragraph" href="#p69fbfdd9" name="p69fbfdd9"> ¶ </a>Isso deixa 52 bits<a class="footref" href="#footnote3">3</a>. Qualquer número inteiro menor que 2<sup>52</sup>
+(é mais do que 10<sup>15</sup>) cabe em um número JavaScript. Na maioria dos casos, 
+os números que usamos ficam bem abaixo disso, então não temos que nos preocuparmos com tudo isso.
+O que é bom. Eu não tenho nada em particular contra bits, mas você precisa de uma terrivel quantidade deles
+para fazer qualquer coisa.
+</p><p><a class="paragraph" href="#p3986de35" name="p3986de35"> ¶ </a>Números fracionarios são escritos usando um ponto.</p><pre class="code expression"><span class="atom">9.81</span></pre><p><a class="paragraph" href="#pb4a36c6" name="pb4a36c6"> ¶ 
+</a>Para números muito grandes ou muito pequenos, pode-se também utilizar a notação 'científica'
+pela adição de um <code>e</code>, seguido pelo expoente do número:</p><pre class="code expression"><span class="atom">2.998e8</span></pre><p><a class="paragraph" href="#p3140e007" name="p3140e007"> ¶ </a>Que é 2.998 * 10<sup>8</sup> = 299800000.</p><p><a class="paragraph" href="#pb68b1cd" name="pb68b1cd"> ¶ </a>
+Cálculos com números inteiros que se encaixam em 52
+bits, será sempre mais preciso. Infelizmente, cálculos com números fracionários geralmente não são.
+Isso é uma vergonha, mas só causa problemas práticos em situações muito específicas.
+O importante é saber que se deve tratar números fracionários como aproximações, não como valores precisos.
+</p></div><hr/><div class="block"><p><a class="paragraph" href="#p355f31b3" name="p355f31b3"> ¶ </a>
+O principal a se fazer com os números é a aritimética.
+ Operações aritméticas tais como a adição ou multiplicação, assumir valores e produzir novos valores. 
+Aqui, veja como se escreve em JavaScript:</p><pre class="code expression"><span class="atom">100</span> + <span class="atom">4</span> * <span class="atom">11</span></pre><p><a class="paragraph" href="#p5df9439a" name="p5df9439a"> ¶ </a>Os símbolos <a name="key3"></a><code>+</code> e <a name="key4"></a><code>*</code> são chamados operadores.
+O primeiro representa adição e o segundo multiplicação.
+Colocar um operador entre dois valores irá realizar uma operação<a name="key5"></a> e produzir um novo valor.
+</p><p><a class="paragraph" href="#p40d95ac7" name="p40d95ac7"> ¶ </a>Será que o exemplo significa 'somar 4 e 100, e multiplicar o resultado por 11',
+ou a multiplicação é feita antes da adição?
+ Como você deve ter adivinhado, a multiplicação acontece primeiro.
+ Mas, como na matemática, isto pode ser alterado com parenteses, especificando como a operação deve ser feita<a name="key6"></a>:</p><pre class="code expression">(<span class="atom">100</span> + <span class="atom">4</span>) * <span class="atom">11</span></pre><p><a class="paragraph" href="#p50d8329c" name="p50d8329c"> ¶ </a>
+ Para subtração, existe o operador <a name="key7"></a><code>-</code> , e para divisão <a name="key8"></a><code>/</code>.
+ Quando os operadores aparecem juntos sem parênteses, a ordem na qual eles são aplicados é determinada pela <a name="key9"></a>precendência dos operadores.
+ O primeiro exemplo mostra que a multiplicação tem uma procedência maior que a adição.
+ Divisão e multiplicação vêm sempre antes de subtraçã e adição.
+ Quando múltiplos operadores com a mesma precedência aparecerem lado a lado (<code>1 - 1 + 1</code>) então eles são executados da esquerda para a direita.
+</p><p><a class="paragraph" href="#p41cb7a91" name="p41cb7a91"> ¶ </a>Tente descobrir qual o valor que esta operação produz, depois execute no console
+para ver se você estava certo...</p><pre class="code expression"><span class="atom">115</span> * <span class="atom">4</span> - <span class="atom">4</span> + <span class="atom">88</span> / <span class="atom">2</span></pre><p><a class="paragraph" href="#p25c63f52" name="p25c63f52"> ¶ </a>
+Estas regras de precedência não é algo que você deev se preocupar.
+ Em caso de dúvida, basta adicionar parênteses.</p><p><a class="paragraph" href="#p762478e7" name="p762478e7"> ¶ </a>
+ Existe um operador em aritmética que provavelmente não é muito familiar para você.
+ É o simbolo <a name="key10"></a><code>%</code> que é usado para encontrar o <a name="key11"></a>resto de uma operação.
+<code>X % Y</code> o resto da divisão de <code>X</code> por <code>Y</code>. Por exemplo
+<code>314 % 100</code> é <code>14</code>, <code>10 % 3</code> é <code>1</code>, e <code>144 % 12</code> é <code>0</code>.
+ O operador de resto tem a mesma procedência com a multiplicação e divisão.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p4a3424f8" name="p4a3424f8"> ¶ </a>
+ O proximo tipo de dado é a <a name="key12"></a>string. 
+ A sua utilização tão evidente quanto o tipo para números.
+ Strings são usadas para representar texto.
+ Strings são escritas colocando seu conteúdo entre aspas:</p><pre class="code expression"><span class="string">&quot;Remendo meu barco com goma de mascar.&quot;</span></pre><p><a class="paragraph" href="#p2578d13f" name="p2578d13f"> ¶ </a>
+ Quase tudo pode ser colocado entre aspas duplas.
+ Mas alguns caracteres são complicados.
+ você pode imaginar que colocar aspas entre aspas pode ser dificil. Quebra de linhas 
+<a name="key13"></a>quando você presiona enter, que também não pode ser colocada entre as aspas, a string tem que ficar em uma única linha.</p><p><a class="paragraph" href="#p5b134df3" name="p5b134df3"> ¶ </a>
+Para poder ter tais caracteres em uma string, o seguinte truque é usado: Sempre que uma barra invertida ('<code>\</code>') é encontrada dentro do texto,
+indica que o caractere que está logo depois dela, tem um significado especial. 
+ Uma string depois de uma barra invertida, vai adicionar um caractere especial ao texto.
+ Quando um caractere '<code>n</code>' é colocado depois de uma barra invertida, ele é interpretado como uma nova linha.
+ Da mesma forma, um '<code>t</code>' depois de uma barra invertida, siginifica uma tabulação "tab character"<a class="footref" href="#footnote4">4</a>.</p><pre class="code expression"><span class="string">&quot;Essa é a primeira linha\nE essa é a segunda&quot;</span></pre><p><a class="paragraph" href="#p38a5cda" name="p38a5cda"> ¶ </a>
+</p><p><a class="paragraph" href="#p69b5ec55" name="p69b5ec55"> ¶ </a>
+Há situações onde você quer apenas uma barra invertida, e não um código especial.
+ Se há duas barras invertidas seguidas uma da outra, elas vão entrar em colapso entre si, 
+ e apenas uma será deixada como resultado:</p><pre class="code expression"><span class="string">&quot;Como um caractere de nova linha é escrito \&quot;\\n\&quot;.&quot;</span></pre></div><hr/><div class="block"><p><a class="paragraph" href="#p78af27fc" name="p78af27fc"> ¶ </a>
+ Strings não podem ser dívidas, multiplicadas, ou subtraidas. O Operador <a name="key14"></a><code>+</code>
+<em>pode</em> ser usado. 
+Com strings, esse operador não soma, mas concatena, junta e cola duas ou mais strings: </p><pre class="code expression"><span class="string">&quot;con&quot;</span> + <span class="string">&quot;cat&quot;</span> + <span class="string">&quot;e&quot;</span> + <span class="string">&quot;na&quot;</span></pre><p><a class="paragraph" href="#p52eb7d44" name="p52eb7d44"> ¶ </a>There are more ways of manipulating strings, but these are discussed
 later.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p66e362e9" name="p66e362e9"> ¶ </a>Not all operators are symbols, some are written as words. For example,
 the <a name="key15"></a><code>typeof</code> operator, which produces a string value naming the type
 of the value you give it.</p><pre class="code expression">typeof <span class="atom">4.5</span></pre><p><a class="paragraph" href="#p1393153f" name="p1393153f"> ¶ </a>The other operators we saw all operated on two values, <code>typeof</code> takes
@@ -188,11 +184,11 @@ browser goes to a new page.</p></div><hr/><div class="block"><p><a class="paragr
 Generally, this piece of program does something useful, which can be
 invoked using the function value that contains it. In a browser
 environment, the variable <a name="key41"></a><code>alert</code> holds a function that shows a
-little dialog window with a message. It is used like this:</p><pre class="code"><span class="variable">alert</span>(<span class="string">&quot;Also, your hair is on fire.&quot;</span>);</pre><p><a class="paragraph" href="#p2982579e" name="p2982579e"> ¶ </a><a name="key42"></a>Executing the code in a function is called <a name="key43"></a>invoking, calling,
+little dialog window with a message. It is used like this:</p><pre class="code"><span class="variable">alert</span>(<span class="string">&quot;Avocados&quot;</span>);</pre><p><a class="paragraph" href="#p2c6de2b8" name="p2c6de2b8"> ¶ </a><a name="key42"></a>Executing the code in a function is called <a name="key43"></a>invoking, calling,
 or <a name="key44"></a>applying it. The notation for doing this uses parentheses. Every
 expression that produces a function value can be invoked by putting
-parentheses after it. The string value between the parentheses is
-given to the function, which uses it as the text to show in the dialog
+parentheses after it. In the example, the value <code>&quot;Avocados&quot;</code> is given
+to the function, which uses it as the text to show in the dialog
 window. Values given to functions are called <a name="key45"></a>parameters or
 <a name="key46"></a>arguments. <code>alert</code> needs only one of them, but other functions might
 need a different number.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p590dcad3" name="p590dcad3"> ¶ </a>Showing a dialog window is a side effect. A lot of functions are
@@ -515,12 +511,12 @@ situations. If a variable is known to contain either a string or
 <code>null</code>, one could check for this very simply...</p><pre class="code"><span class="keyword">var</span> <span class="variable">maybeNull</span> = <span class="atom">null</span>;
 <span class="comment">// ... mystery code that might put a string into maybeNull ...</span>
 <span class="keyword">if</span> (<span class="variable">maybeNull</span>)
-  <span class="variable">print</span>(<span class="string">&quot;maybeNull has a value&quot;</span>);</pre><p><a class="paragraph" href="#p7ab84313" name="p7ab84313"> ¶ </a>Except in the case where the mystery code gives <code>maybeNull</code> the value
-<code>&quot;&quot;</code>. An empty string is false, so nothing is printed. Depending on
-what you are trying to do, this might be <em>wrong</em>. It is often a good
-idea to add an explicit <code>=== null</code> or <code>=== false</code> in cases like this
-to prevent subtle mistakes. The same occurs with number values that
-might be <code>0</code>.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p7139d870" name="p7139d870"> ¶ </a>The line that talks about 'mystery code' in the previous example might
+  <span class="variable">print</span>(<span class="string">&quot;maybeNull has a value&quot;</span>);</pre><p><a class="paragraph" href="#p263ff17d" name="p263ff17d"> ¶ </a>... except in the case where the mystery code gives <code>maybeNull</code> the
+value <code>&quot;&quot;</code>. An empty string is false, so nothing is printed. Depending
+on what you are trying to do, this might be <em>wrong</em>. It is often a
+good idea to add an explicit <code>=== null</code> or <code>=== false</code> in cases like
+this to prevent subtle mistakes. The same occurs with number values
+that might be <code>0</code>.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p7139d870" name="p7139d870"> ¶ </a>The line that talks about 'mystery code' in the previous example might
 have looked a bit suspicious to you. It is often useful to include
 extra text in a program. The most common use for this is adding some
 explanations in human language to a program.</p><pre class="code"><span class="comment">// The variable counter, which is about to be defined, is going</span>
@@ -594,4 +590,4 @@ To get special characters to show properly, you can do <code>print(&quot;a\nb&qu
 ― why this works, we will see in a moment.</li><li><a name="footnote5"></a>The bit bucket is supposedly the place where old bits are kept. On
 some systems, the programmer has to manually empty it now and then.
 Fortunately, JavaScript comes with a fully-automatic bit-recycling
-system.</li></ol><div class="navigation"><a href="chapter1.html">&lt;&lt; Previous chapter</a> | <a href="contents.html">Contents</a> | <a href="index.html">Cover</a> | <a href="chapter3.html">Next chapter &gt;&gt;</a></div><div class="footer">© <a href="mailto:marijnh@gmail.com">Marijn Haverbeke</a> (<a href="http://creativecommons.org/licenses/by/3.0/">license</a>), written March to July 2007, last modified on August 14 2012.</div></div><script type="text/javascript" src="js/mochi.js"> </script><script type="text/javascript" src="js/codemirror.js"> </script><script type="text/javascript" src="js/ejs.js"> </script></body></html>
+system.</li></ol><div class="navigation"><a href="chapter1.html">&lt;&lt; Previous chapter</a> | <a href="contents.html">Contents</a> | <a href="index.html">Cover</a> | <a href="chapter3.html">Next chapter &gt;&gt;</a></div><div class="footer">© <a href="mailto:marijnh@gmail.com">Marijn Haverbeke</a> (<a href="http://creativecommons.org/licenses/by/3.0/">license</a>), written March to July 2007, last modified on March 22 2013.</div></div><script type="text/javascript" src="js/mochi.js"> </script><script type="text/javascript" src="js/codemirror.js"> </script><script type="text/javascript" src="js/ejs.js"> </script></body></html>
