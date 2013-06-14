@@ -57,7 +57,7 @@ ou a multiplicação é feita antes da adição?
  Quando múltiplos operadores com a mesma precedência aparecerem lado a lado (<code>1 - 1 + 1</code>) então eles são executados da esquerda para a direita.
 </p><p><a class="paragraph" href="#p41cb7a91" name="p41cb7a91"> ¶ </a>Tente descobrir qual o valor que esta operação produz, depois execute no console
 para ver se você estava certo...</p><pre class="code expression"><span class="atom">115</span> * <span class="atom">4</span> - <span class="atom">4</span> + <span class="atom">88</span> / <span class="atom">2</span></pre><p><a class="paragraph" href="#p25c63f52" name="p25c63f52"> ¶ </a>
-Estas regras de precedência não é algo que você deev se preocupar.
+Estas regras de precedência não é algo que você deve se preocupar.
  Em caso de dúvida, basta adicionar parênteses.</p><p><a class="paragraph" href="#p762478e7" name="p762478e7"> ¶ </a>
  Existe um operador em aritmética que provavelmente não é muito familiar para você.
  É o simbolo <a name="key10"></a><code>%</code> que é usado para encontrar o <a name="key11"></a>resto de uma operação.
@@ -71,7 +71,7 @@ Estas regras de precedência não é algo que você deev se preocupar.
  Quase tudo pode ser colocado entre aspas duplas.
  Mas alguns caracteres são complicados.
  você pode imaginar que colocar aspas entre aspas pode ser dificil. Quebra de linhas 
-<a name="key13"></a>quando você presiona enter, que também não pode ser colocada entre as aspas, a string tem que ficar em uma única linha.</p><p><a class="paragraph" href="#p5b134df3" name="p5b134df3"> ¶ </a>
+<a name="key13"></a>quando você presionar enter, que também não pode ser colocada entre as aspas, a string tem que ficar em uma única linha.</p><p><a class="paragraph" href="#p5b134df3" name="p5b134df3"> ¶ </a>
 Para poder ter tais caracteres em uma string, o seguinte truque é usado: Sempre que uma barra invertida ('<code>\</code>') é encontrada dentro do texto,
 indica que o caractere que está logo depois dela, tem um significado especial. 
  Uma string depois de uma barra invertida, vai adicionar um caractere especial ao texto.
@@ -83,96 +83,87 @@ Há situações onde você quer apenas uma barra invertida, e não um código es
  e apenas uma será deixada como resultado:</p><pre class="code expression"><span class="string">&quot;Como um caractere de nova linha é escrito \&quot;\\n\&quot;.&quot;</span></pre></div><hr/><div class="block"><p><a class="paragraph" href="#p78af27fc" name="p78af27fc"> ¶ </a>
  Strings não podem ser dívidas, multiplicadas, ou subtraidas. O Operador <a name="key14"></a><code>+</code>
 <em>pode</em> ser usado. 
-Com strings, esse operador não soma, mas concatena, junta e cola duas ou mais strings: </p><pre class="code expression"><span class="string">&quot;con&quot;</span> + <span class="string">&quot;cat&quot;</span> + <span class="string">&quot;e&quot;</span> + <span class="string">&quot;na&quot;</span></pre><p><a class="paragraph" href="#p52eb7d44" name="p52eb7d44"> ¶ </a>There are more ways of manipulating strings, but these are discussed
-later.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p66e362e9" name="p66e362e9"> ¶ </a>Not all operators are symbols, some are written as words. For example,
-the <a name="key15"></a><code>typeof</code> operator, which produces a string value naming the type
-of the value you give it.</p><pre class="code expression">typeof <span class="atom">4.5</span></pre><p><a class="paragraph" href="#p1393153f" name="p1393153f"> ¶ </a>The other operators we saw all operated on two values, <code>typeof</code> takes
-only one. Operators that use two values are called <a name="key16"></a>binary operators,
-while those that take one are called <a name="key17"></a>unary operators. The
-<a name="key18"></a>minus operator can be used both as a binary and a unary
-operator:</p><pre class="code expression">- (<span class="atom">10</span> - <span class="atom">2</span>)</pre></div><hr/><div class="block"><p><a class="paragraph" href="#p1d28c375" name="p1d28c375"> ¶ </a>Then there are values of the <a name="key19"></a>boolean type. There are only two of
-these: <a name="key20"></a><code>true</code> and <a name="key21"></a><code>false</code>. Here is one way to produce a <code>true</code>
-value:</p><pre class="code expression"><span class="atom">3</span> &gt; <span class="atom">2</span></pre><p><a class="paragraph" href="#p64212834" name="p64212834"> ¶ </a>And <code>false</code> can be produced like this:</p><pre class="code expression"><span class="atom">3</span> &lt; <span class="atom">2</span></pre><p><a class="paragraph" href="#p3e739e44" name="p3e739e44"> ¶ </a>I hope you have seen the <a name="key22"></a><code>&gt;</code> and <a name="key23"></a><code>&lt;</code> signs before. They mean,
-respectively, 'is greater than' and 'is less than'. They are binary
-operators, and the result of applying them is a boolean value that
-indicates whether they hold in this case.</p><p><a class="paragraph" href="#p2dc50e01" name="p2dc50e01"> ¶ </a>Strings can be compared in the same way:</p><pre class="code expression"><span class="string">&quot;Aardvark&quot;</span> &lt; <span class="string">&quot;Zoroaster&quot;</span></pre><p><a class="paragraph" href="#p7e3e4694" name="p7e3e4694"> ¶ </a>The way strings are ordered is more or less alphabetic. More or
-less... Uppercase letters are always 'less' than lowercase ones, so
-<code>&quot;Z&quot; &lt; &quot;a&quot;</code> (upper-case Z, lower-case a) is <code>true</code>, and non-alphabetic
-characters ('<code>!</code>', '<code>@</code>', etc) are also included in the ordering. The
-actual way in which the comparison is done is based on the <a name="key24"></a>Unicode
-standard. This standard assigns a number to virtually every character
-one would ever need, including characters from Greek, Arabic,
-Japanese, Tamil, and so on. Having such numbers is practical for
-storing strings inside a computer ― you can represent them as a list
-of numbers. When comparing strings, JavaScript just compares the
-numbers of the characters inside the string, from left to right.</p><p><a class="paragraph" href="#p16c0de67" name="p16c0de67"> ¶ </a>Other similar operators are <a name="key25"></a><code>&gt;=</code> ('is greater than or equal to'),
-<a name="key26"></a><code>&lt;=</code> (is less than or equal to), <a name="key27"></a><code>==</code> ('is equal to'), and <a name="key28"></a><code>!=</code>
-('is not equal to').</p><pre class="code expression"><span class="string">&quot;Itchy&quot;</span> != <span class="string">&quot;Scratchy&quot;</span></pre><pre class="code expression"><span class="atom">5e2</span> == <span class="atom">500</span></pre></div><hr/><div class="block"><p><a class="paragraph" href="#p8cbcfe" name="p8cbcfe"> ¶ </a>There are also some useful operations that can be applied to boolean
-values themselves. JavaScript supports three logical operators: <em>and</em>,
-<em>or</em>, and <em>not</em>. These can be used to 'reason' about booleans.</p><p><a class="paragraph" href="#p573b490c" name="p573b490c"> ¶ </a>The <a name="key29"></a><code>&amp;&amp;</code> operator represents logical <em>and</em>. It is a binary operator,
-and its result is only <code>true</code> if both of the values given to it are
-<code>true</code>.</p><pre class="code expression"><span class="atom">true</span> &amp;&amp; <span class="atom">false</span></pre><p><a class="paragraph" href="#p212b9b68" name="p212b9b68"> ¶ </a><a name="key30"></a><code>||</code> is the logical <em>or</em>, it is <code>true</code> if either of the values given
-to it is <code>true</code>:</p><pre class="code expression"><span class="atom">true</span> || <span class="atom">false</span></pre><p><a class="paragraph" href="#p7168ee71" name="p7168ee71"> ¶ </a><em>Not</em> is written as an exclamation mark, <a name="key31"></a><code>!</code>, it is a unary operator
-that flips the value given to it, <code>!true</code> is <code>false</code>, and <code>!false</code> is
-<code>true</code>.</p></div><hr/><div class="block"><a name="exercise1"></a><div class="exercisenum">Ex. 2.1</div><div class="exercise"><pre class="code expression">((<span class="atom">4</span> &gt;= <span class="atom">6</span>) || (<span class="string">&quot;grass&quot;</span> != <span class="string">&quot;green&quot;</span>)) &amp;&amp;
-   !(((<span class="atom">12</span> * <span class="atom">2</span>) == <span class="atom">144</span>) &amp;&amp; <span class="atom">true</span>)</pre><p><a class="paragraph" href="#p168e6ad" name="p168e6ad"> ¶ </a>Is this true? For readability, there are a lot of unnecessary
-parentheses in there. This simple version means the same thing:</p><pre class="code expression">(<span class="atom">4</span> &gt;= <span class="atom">6</span> || <span class="string">&quot;grass&quot;</span> != <span class="string">&quot;green&quot;</span>) &amp;&amp;
-   !(<span class="atom">12</span> * <span class="atom">2</span> == <span class="atom">144</span> &amp;&amp; <span class="atom">true</span>)</pre></div><div class="solution"><p><a class="paragraph" href="#p7888dd02" name="p7888dd02"> ¶ </a>Yes, it is <code>true</code>. You can reduce it step by step like this:</p><pre class="code expression">(<span class="atom">false</span> || <span class="atom">true</span>) &amp;&amp; !(<span class="atom">false</span> &amp;&amp; <span class="atom">true</span>)</pre><pre class="code expression"><span class="atom">true</span> &amp;&amp; !<span class="atom">false</span></pre><pre class="code expression"><span class="atom">true</span></pre><p><a class="paragraph" href="#p706b68a" name="p706b68a"> ¶ </a>I hope you noticed that <code>&quot;grass&quot; != &quot;green&quot;</code> is <code>true</code>. Grass may be
-green, but it is not equal to green.</p></div></div><hr/><div class="block"><p><a class="paragraph" href="#p34222453" name="p34222453"> ¶ </a>It is not always obvious when parentheses are needed. In practice, one
-can usually get by with knowing that of the operators we have seen so
-far, <code>||</code> has the lowest precedence, then comes <code>&amp;&amp;</code>, then the
-comparison operators (<code>&gt;</code>, <code>==</code>, etcetera), and then the rest. This
-has been chosen in such a way that, in simple cases, as few
-parentheses as possible are necessary.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p65af5913" name="p65af5913"> ¶ </a>All the examples so far have used the language like you would use a
-pocket calculator. Make some values and apply operators to them to get
-new values. Creating values like this is an essential part of every
-JavaScript program, but it is only a part. A piece of code that
-produces a value is called an <a name="key32"></a>expression. Every value that is
-written directly (such as <code>22</code> or <code>&quot;psychoanalysis&quot;</code>) is an
-expression. An expression between parentheses is also an expression.
-And a binary operator applied to two expressions, or a unary operator
-applied to one, is also an expression.</p><p><a class="paragraph" href="#p5b67046e" name="p5b67046e"> ¶ </a>There are a few more ways of building expressions, which will be
-revealed when the time is ripe.</p><p><a class="paragraph" href="#p62c355c2" name="p62c355c2"> ¶ </a>There exists a unit that is bigger than an expression. It is called a
-<a name="key33"></a>statement. A program is built as a list of statements. Most
-statements end with a <a name="key34"></a>semicolon (<code>;</code>). The simplest kind of
-statement is an expression with a semicolon after it. This is a
-program:</p><pre class="code"><span class="atom">1</span>;
-!<span class="atom">false</span>;</pre><p><a class="paragraph" href="#p29a7e8db" name="p29a7e8db"> ¶ </a>It is a useless program. An expression can be content to just produce
-a value, but a statement only amounts to something if it somehow
-changes the world. It could print something to the screen ― that
-counts as changing the world ― or it could change the internal state
-of the program in a way that will affect the statements that come
-after it. These changes are called '<a name="key35"></a>side effects'. The statements in
-the example above just produce the values <code>1</code> and <code>true</code>, and then
-immediately throw them into the bit bucket<a class="footref" href="#footnote5">5</a>. This leaves no
-impression on the world at all, and is not a side effect.</p></div><hr/><div class="block"><p><a class="paragraph" href="#p65170986" name="p65170986"> ¶ </a>How does a program keep an internal state? How does it remember
-things? We have seen how to produce new values from old values, but
-this does not change the old values, and the new value has to be
-immediately used or it will dissipate again. To catch and hold values,
-JavaScript provides a thing called a <a name="key36"></a>variable.</p><pre class="code"><span class="keyword">var</span> <span class="variable">caught</span> = <span class="atom">5</span> * <span class="atom">5</span>;</pre><p><a class="paragraph" href="#p405a34f5" name="p405a34f5"> ¶ </a>A variable always has a name, and it can point at a value, holding on
-to it. The statement above creates a variable called <code>caught</code> and uses
-it to grab hold of the number that is produced by multiplying <code>5</code> by
-<code>5</code>.</p><p><a class="paragraph" href="#p6a3bce68" name="p6a3bce68"> ¶ </a>After running the above program, you can type the word <code>caught</code> into
-the console, and it will retrieve the value <code>25</code> for you. The name of
-a variable is used to fetch its value. <code>caught + 1</code> also works. A
-variable name can be used as an expression, and thus can be part of
-bigger expressions.</p><p><a class="paragraph" href="#p47e8e505" name="p47e8e505"> ¶ </a>The word <a name="key37"></a><code>var</code> is used to create a new variable. After <code>var</code>, the
-name of the variable follows. Variable names can be almost every word,
-but they may not include spaces. Digits can be part of variable names,
-<code>catch22</code> is a valid name, but the name must not start with a digit. The
-characters '<code>$</code>' and '<code>_</code>' can be used in names as if they were
-letters, so <code>$_$</code> is a correct variable name.</p><p><a class="paragraph" href="#p223643ae" name="p223643ae"> ¶ </a>If you want the new variable to immediately capture a value, which is
-often the case, the <a name="key38"></a><code>=</code> operator can be used to give it the value of
-some expression.</p><p><a class="paragraph" href="#p666db7fe" name="p666db7fe"> ¶ </a>When a variable points at a value, that does not mean it is tied to
-that value forever. At any time, the <code>=</code> operator can be used on
-existing variables to yank them away from their current value and make
-them point to a new one.</p><pre class="code"><span class="variable">caught</span> = <span class="atom">4</span> * <span class="atom">4</span>;</pre></div><hr/><div class="block"><p><a class="paragraph" href="#p2d8c2774" name="p2d8c2774"> ¶ </a>You should imagine variables as tentacles, rather than boxes. They do
-not <em>contain</em> values, they <em>grasp</em> them ― two variables can refer to
-the same value. Only the values that the program still has a hold on
-can be accessed by it. When you need to remember something, you grow a
-tentacle to hold on to it, or re-attach one of your existing tentacles
-to a new value: To remember the amount of dollars that Luigi still
-owes you, you could do...</p><pre class="code"><span class="keyword">var</span> <span class="variable">luigiDebt</span> = <span class="atom">140</span>;</pre><p><a class="paragraph" href="#p1d72168c" name="p1d72168c"> ¶ </a>Then, every time Luigi pays something back, this amount can be
+Com strings, esse operador não soma, mas concatena, junta e cola duas ou mais strings: </p><pre class="code expression"><span class="string">&quot;con&quot;</span> + <span class="string">&quot;cat&quot;</span> + <span class="string">&quot;e&quot;</span> + <span class="string">&quot;na&quot;</span></pre><p><a class="paragraph" href="#p52eb7d44" name="p52eb7d44"> ¶ </a>
+Há mais maneiras de manipular Strings, isto será discutido mais tarde.
+</p></div><hr/><div class="block"><p><a class="paragraph" href="#p66e362e9" name="p66e362e9"> ¶ </a>
+Nem todos os operadores são simbolos, alguns são palavras. Por exemplo, o operador <a name="key15"></a><code>typeof</code> , que produz uma string com o nome do tipo de valor que foi atribuido a ele.
+</p><pre class="code expression">typeof <span class="atom">4.5</span></pre><p><a class="paragraph" href="#p1393153f" name="p1393153f"> ¶ </a>
+Os outros operadores que vimos, todos operam com dois valores, <code>typeof</code> opera só com um. Os operadores que usam dois valores são chamados de <a name="key16"></a>operadores binários,
+e aqueles que usam somente um, são chamados de <a name="key17"></a>operadores únarios.
+ O <a name="key18"></a> operador de subtração pode ser usado como binário ou unário:</p><pre class="code expression">- (<span class="atom">10</span> - <span class="atom">2</span>)</pre></div><hr/><div class="block"><p><a class="paragraph" href="#p1d28c375" name="p1d28c375"> ¶ </a>
+ Existem valores do tipo <a name="key19"></a>boolean. Há apenas dois deles: <a name="key20"></a><code>true</code> e <a name="key21"></a><code>false</code>. Aqui está uma maneira de produzir um valor <code>true</code>
+: </p><pre class="code expression"><span class="atom">3</span> &gt; <span class="atom">2</span></pre><p><a class="paragraph" href="#p64212834" name="p64212834"> ¶ </a>E <code>false</code> pode ser produzido assim:</p><pre class="code expression"><span class="atom">3</span> &lt; <span class="atom">2</span></pre><p><a class="paragraph" href="#p3e739e44" name="p3e739e44"> ¶ </a>
+Espero que você tenha visto os sinais <a name="key22"></a><code>&gt;</code> e <a name="key23"></a><code>&lt;</code> .
+ Eles significam 'é maior que' e 'é menor que'. Eles são operadores binários, e o resultado da operação é um valor booleano que diz se é verdadeiro ou falso (true or false).
+</p><p><a class="paragraph" href="#p2dc50e01" name="p2dc50e01"> ¶ </a>
+As strings podem ser comparadas da mesma forma:</p><pre class="code expression"><span class="string">&quot;Aardvark&quot;</span> &lt; <span class="string">&quot;Zoroaster&quot;</span></pre><p><a class="paragraph" href="#p7e3e4694" name="p7e3e4694"> ¶ </a>
+Ao comparar strings, JavaScript apenas compara sua quantidade de caracteres dentro da string, da esquerda para a direita. 
+</p><p><a class="paragraph" href="#p16c0de67" name="p16c0de67"> ¶ </a>
+Outros operadores similares são <a name="key25"></a><code>&gt;=</code> ('é maior do que ou igual a'),
+<a name="key26"></a><code>&lt;=</code> (é menor do que ou igual a), <a name="key27"></a><code>==</code> ('é igual a'), e <a name="key28"></a><code>!=</code>
+('não é igual a').</p><pre class="code expression"><span class="string">&quot;Gato&quot;</span> != <span class="string">&quot;Cão&quot;</span></pre><pre class="code expression"><span class="atom">5e2</span> == <span class="atom">500</span></pre></div><hr/><div class="block"><p><a class="paragraph" href="#p8cbcfe" name="p8cbcfe"> ¶ </a>
+JavaScript suporta três operadores lógicos: <strong><em>E</em></strong>, <strong><em>OU</em></strong>, <strong><em>NÃO</em></strong>.
+ </p><p><a class="paragraph" href="#p573b490c" name="p573b490c"> ¶ </a>
+este <a name="key29"></a><!--<code>&amp;&amp;</code>--><strong>&&</strong> é o operador lógico <em><strong>E</strong></em>. É um operador binário, e seu resultado só é <code>verdadeiro</code> se seus dois valores forem
+<code>verdadeiros</code>.</p><pre class="code expression"><span class="atom">true</span> &amp;&amp; <span class="atom">false</span></pre><p><a class="paragraph" href="#p212b9b68" name="p212b9b68"> ¶ </a><a name="key30"></a>Este <!--<code>||</code>--><strong>||</strong> É o operador lógico <em><strong>OU</strong></em>, e é <code>verdadeiro</code> se qualquer um dos valores for 
+<code>verdadeiro</code>:</p><pre class="code expression"><span class="atom">true</span> || <span class="atom">false</span></pre><p><a class="paragraph" href="#p7168ee71" name="p7168ee71"> ¶ </a><strong><em>NÃO</em></strong> é escrito com ponto de exclamação, <a name="key31"></a><code>!</code>, é um operador unário que inverte o valor dado a ele<br/>
+ <code>!verdadeiro</code> se torna <code>falso</code>, e <code>!falso</code> se torna <code>verdadeiro</code>.
+ </p></div><hr/><div class="block"><a name="exercise1"></a><div class="exercisenum">Ex. 2.1</div><div class="exercise"><pre class="code expression">((<span class="atom">4</span> &gt;= <span class="atom">6</span>) || (<span class="string">&quot;grama&quot;</span> != <span class="string">&quot;verde&quot;</span>)) &amp;&amp;
+   !(((<span class="atom">12</span> * <span class="atom">2</span>) == <span class="atom">144</span>) &amp;&amp; <span class="atom">true</span>)</pre><p><a class="paragraph" href="#p168e6ad" name="p168e6ad"> ¶ </a>
+   Esse bloco de código vai resultar em verdade? Para facilitar a leitura, há um monte de parênteses desnecessários lá.
+   Esta versão simples significa a mesma coisa:</p><pre class="code expression">(<span class="atom">4</span> &gt;= <span class="atom">6</span> || <span class="string">&quot;grama&quot;</span> != <span class="string">&quot;verde&quot;</span>) &amp;&amp;
+   !(<span class="atom">12</span> * <span class="atom">2</span> == <span class="atom">144</span> &amp;&amp; <span class="atom">true</span>)</pre></div><div class="solution"><p><a class="paragraph" href="#p7888dd02" name="p7888dd02"> ¶ </a>
+   Sim, é <code>verdadeiro</code>. Você pode reduzir passo a passo, como aqui:</p><pre class="code expression">(<span class="atom">false</span> || <span class="atom">true</span>) &amp;&amp; !(<span class="atom">false</span> &amp;&amp; <span class="atom">true</span>)</pre><pre class="code expression"><span class="atom">true</span> &amp;&amp; !<span class="atom">false</span></pre><pre class="code expression"><span class="atom">true</span></pre><p><a class="paragraph" href="#p706b68a" name="p706b68a"> ¶ </a>
+   Eu espero que você tenha percebido que <code>&quot;grama&quot; != &quot;verde&quot;</code> é <code>true</code>.
+   A grama pode ser verde, mas não igual ao verde.</p></div></div><hr/><div class="block"><p><a class="paragraph" href="#p34222453" name="p34222453"> ¶ </a>
+Não é sempre óbvio quando parênteses são necessários. Ná prática,
+ <code>||</code> tem a menor procedência, depois vem <code>&amp;&amp;</code>, e então vem os operadores de comparação
+(<code>&gt;</code>, <code>==</code>, et...), e, em seguida, o resto. 
+Foi escolhido nesta ordem, para que seja necessário o menor numero de parênteses possível</p></div><hr/><div class="block"><p><a class="paragraph" href="#p65af5913" name="p65af5913"> ¶ </a>
+Todos os exemplos até agora, foram da mesma forma de como você usaria uma calculadora de bolso. Faça algumas operações, obtenha valores e aplique estes operadores a eles para obter novos valores.
+ Criar valores como este, é uma parte essencial de qualquer programa JavaScript, mas é só uma parte. 
+ A parte do código que produz um valor é chamada <a name="key32"></a>expressão.
+ Todo valor que está escrito diretamente (como <code>22</code> ou <code>&quot;psychoanalysis&quot;</code>) é uma expressão.
+ Uma expressão entre parênteses também é uma expressão.
+E um operador binário aplicado a duas expressões, ou um operador unário aplicado a uma, também são expressões.
+</p><p><a class="paragraph" href="#p5b67046e" name="p5b67046e"> ¶ </a>
+Há mais maneiras de construir expressões, veremos mais a frente.
+</p><p><a class="paragraph" href="#p62c355c2" name="p62c355c2"> ¶ </a>
+Existe uma unidade que é maior do que uma expressão. Ela é chamada de
+<a name="key33"></a>declaração. Um programa é construido com uma lista de declarações.
+ A maioria das declarações terminam com um <a name="key34"></a>ponto e virgula (<code>;</code>).
+ O tipo mais simples de declaração é uma expressão com um ponto e virgula. 
+ Isso é um programa:</p><pre class="code"><span class="atom">1</span>;
+!<span class="atom">false</span>;</pre><p><a class="paragraph" href="#p29a7e8db" name="p29a7e8db"> ¶ </a>
+É um programa inútil. Uma expressão pode se contentar em produzir apenas um valor, mas uma única declaração equivale a algo que de alguma forma pode se mudar o mundo.
+ Poderia imprimir algo na tela ― que conta como mudar o mundo ― ou poderia mudar o estado interno do programa, que afetaria outras declarações que vem depois. 
+ Essas mudanças são chamadas de '<a name="key35"></a>efeitos colaterais'.
+ As declarações no exemplo acima apenas produzem os valores <code>1</code> e <code>true</code>, e imediatamente em seguida são reciclados<a class="footref" href="#footnote5">5</a>. Isso não diz nada sobre o mundo, e não é um efeito colateral.
+ </p></div><hr/><div class="block"><p><a class="paragraph" href="#p65170986" name="p65170986"> ¶ </a>
+ Como um programa mantem um estado interno? Como se lembra das coisas? 
+ Vimos como produzir novos valores a partir de valores antigos, mas isso não altera os valores antigos,
+ e o novo valor tem que ser imediatamente usado ou vai se dissipar novamente.
+ Para capturar e armazenar valores, JavaScript fornece uma coisa chamada <a name="key36"></a>variavel.</p><pre class="code"><span class="keyword">var</span> <span class="variable">caught</span> = <span class="atom">5</span> * <span class="atom">5</span>;</pre><p><a class="paragraph" href="#p405a34f5" name="p405a34f5"> ¶ </a>
+ Uma variável sempre tem um nome, e pode apontar um valor, referenciado-se a ele.
+ A declaração acima cria uma variável chamada <code>caught</code> que é usada para referenciar um número que vai ser produzido pela multiplicação de <code>5</code> por <code>5</code>.
+ </p><p><a class="paragraph" href="#p6a3bce68" name="p6a3bce68"> ¶ </a>
+ Após executar o programa acima, você pode digitar a palavra <code>caught</code> no console, e vai ser recuperado o valor <code>25</code> para você.
+ O nome da variável é usado para buscar o seu valor. <code>caught + 1</code> também funciona.
+ O nome de uma variável pode ser utilizado em uma expressão, e, assim, pode fazer parte de expressões maiores.
+</p><p><a class="paragraph" href="#p47e8e505" name="p47e8e505"> ¶ </a>A palavra <a name="key37"></a><code>var</code> é usada para criar uma nova variável.
+ Depois de <code>var</code>, vem o nome da variável. Os nomes de variáveis podem ser quase qualquer palavra em qualquer ordem, mas não pode incluir espaços e nem começar com um dígito.
+ Dígitos podem fazer parte do nome de uma variável mas não pode ser o primeiro caractere do nome da variável, <code>catch22</code> é um nome valido.
+ Os caracteres '<code>$</code>' e '<code>_</code>' também podem fazer parte de nomes de variáveis, então <code>$_$</code> pode ser o nome de uma variável.
+ </p><p><a class="paragraph" href="#p223643ae" name="p223643ae"> ¶ </a>
+ Se quiser que a nova variável capture um valor, que é quase sempre o caso, o operador <a name="key38"></a><code>=</code> pode ser usado para dar-lhe o resultado de uma expressão.
+ </p><p><a class="paragraph" href="#p666db7fe" name="p666db7fe"> ¶ </a>Quando uma variável armazena um valor, isso não significa que ela vai armazenar esse valor para sempre.
+ A qualquer momento, o operador <code>=</code> pode ser usado para dar-lhe um novo valor.
+</p><pre class="code"><span class="variable">caught</span> = <span class="atom">4</span> * <span class="atom">4</span>;</pre></div><hr/><div class="block"><p><a class="paragraph" href="#p2d8c2774" name="p2d8c2774"> ¶ </a>
+Você deve imaginar variáveis como tentáculos, em vez de caixas.
+ Elas não <em>contem</em> valores,<em>compreenda</em> ― duas variáveis pdem se referir ao mesmo valor.
+ Only the values that the program still has a hold on can be accessed by it.
+ When you need to remember something, you grow a tentacle to hold on to it, or re-attach one of your existing tentacles
+to a new value: To remember the amount of dollars that Luigi still owes you, you could do...</p><pre class="code"><span class="keyword">var</span> <span class="variable">luigiDebt</span> = <span class="atom">140</span>;</pre><p><a class="paragraph" href="#p1d72168c" name="p1d72168c"> ¶ </a>Then, every time Luigi pays something back, this amount can be
 decremented by giving the variable a new number:</p><pre class="code"><span class="variable">luigiDebt</span> = <span class="variable">luigiDebt</span> - <span class="atom">35</span>;</pre><p><a class="paragraph" href="#p233236e8" name="p233236e8"> ¶ </a>The collection of variables and their values that exist at a given
 time is called the <a name="key39"></a>environment. When a program starts up, this
 environment is not empty. It always contains a number of standard
